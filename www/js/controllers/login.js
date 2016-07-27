@@ -16,8 +16,9 @@ app.controller('LoginCtrl', function($scope, $state, $ionicPopup, Auth) {
                         user = $scope.user;
                         Auth.login(user).then(function() {
                             $state.go('tab.dash');
+                        }, function(err) {
+                            console.log('Err', err);
                         });
-                        console.log(user);
                       }
                   },
                   {
@@ -29,6 +30,8 @@ app.controller('LoginCtrl', function($scope, $state, $ionicPopup, Auth) {
                       Auth.register(user).then(function() {
                           console.log("User was registered successfully");
                           $state.go('tab.dash');
+                      }, function(err) {
+                          console.log('Err', err);
                       });
                     }
                   }
